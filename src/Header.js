@@ -2,26 +2,27 @@ import React, { useState } from "react";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const externalLinks = "https://niaz.my.id"
 
     return (
-        <header className="bg-white shadow-lg">
-            <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+        <header className="border-b-2 border-gray-200 shadow-lg bg-white/95">
+            <div className="flex items-center justify-between max-w-6xl px-4 py-4 mx-auto">
                 <div className="flex items-center space-x-3">
-                    <span className="text-3xl font-extrabold text-indigo-700 tracking-tight">🎁 Gift Viewer</span>
+                    <span className="text-3xl font-extrabold tracking-wide text-transparent bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text drop-shadow">🎁 Gift Viewer</span>
+                    <span className="hidden ml-2 text-base font-normal text-gray-400 sm:inline">(By NiazTy)</span>
                 </div>
-                <nav className="hidden md:flex space-x-8">
-                    <a href="#" className="text-indigo-700 font-medium hover:text-yellow-500 transition">Home</a>
-                    <a href="#" className="text-indigo-700 font-medium hover:text-yellow-500 transition">About</a>
-                    <a href="#" className="text-indigo-700 font-medium hover:text-yellow-500 transition">Contact</a>
+                <nav className="hidden space-x-8 md:flex">
+                    <a href={externalLinks} className="font-semibold text-pink-500 transition hover:text-blue-500">Home</a>
+                    <a href={`${externalLinks}/about`} className="font-semibold text-pink-500 transition hover:text-blue-500">About</a>
                 </nav>
                 <button
-                    className="md:hidden flex flex-col justify-center items-center w-10 h-10 group"
+                    className="flex flex-col items-center justify-center w-10 h-10 md:hidden group"
                     onClick={() => setMenuOpen(!menuOpen)}
                     aria-label="Toggle menu"
                 >
-                    <span className={`block h-1 w-8 bg-indigo-700 rounded transition-transform duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`}></span>
-                    <span className={`block h-1 w-8 bg-indigo-700 rounded my-1 transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}></span>
-                    <span className={`block h-1 w-8 bg-indigo-700 rounded transition-transform duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`}></span>
+                    <span className={`block h-1 w-8 bg-pink-400 rounded transition-transform duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`}></span>
+                    <span className={`block h-1 w-8 bg-pink-400 rounded my-1 transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}></span>
+                    <span className={`block h-1 w-8 bg-pink-400 rounded transition-transform duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`}></span>
                 </button>
             </div>
             {/* Mobile Menu Overlay */}
@@ -30,14 +31,14 @@ const Header = () => {
                 onClick={() => setMenuOpen(false)}
             />
             <nav
-                className={`md:hidden fixed top-0 right-0 w-64 h-full bg-white shadow-2xl z-50 transform transition-transform duration-300 ${
+                className={`md:hidden fixed top-0 right-0 w-64 h-full bg-white/95 shadow-2xl z-50 transform transition-transform duration-300 ${
                     menuOpen ? "translate-x-0" : "translate-x-full"
                 }`}
             >
-                <div className="flex items-center justify-between px-6 py-5 border-b">
-                    <span className="text-xl font-bold text-indigo-700">Gift Viewer</span>
+                <div className="flex items-center justify-between px-6 py-5 border-b border-pink-100">
+                    <span className="text-xl font-bold text-transparent bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text">Gift Viewer</span>
                     <button
-                        className="w-8 h-8 flex items-center justify-center"
+                        className="flex items-center justify-center w-8 h-8"
                         onClick={() => setMenuOpen(false)}
                         aria-label="Close menu"
                     >
@@ -47,9 +48,8 @@ const Header = () => {
                     </button>
                 </div>
                 <div className="flex flex-col px-6 py-4 space-y-4">
-                    <a href="#" className="text-gray-800 font-medium hover:text-indigo-600 transition" onClick={() => setMenuOpen(false)}>Home</a>
-                    <a href="#" className="text-gray-800 font-medium hover:text-indigo-600 transition" onClick={() => setMenuOpen(false)}>About</a>
-                    <a href="#" className="text-gray-800 font-medium hover:text-indigo-600 transition" onClick={() => setMenuOpen(false)}>Contact</a>
+                    <a href={externalLinks} className="font-semibold text-pink-500 transition hover:text-blue-500" onClick={() => setMenuOpen(false)}>Home</a>
+                    <a href={`${externalLinks}/about`} className="font-semibold text-pink-500 transition hover:text-blue-500" onClick={() => setMenuOpen(false)}>About</a>
                 </div>
             </nav>
         </header>
